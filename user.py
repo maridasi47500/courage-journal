@@ -89,7 +89,7 @@ class User(Model):
           monscript=Fichier("./uploads",script).ecrire("""p "je m'ppelle {name}, je suis {job}, je gagne 2000eur"
          """.format(myroot=os.getcwd(), job=jobname,name=user1["nomcomplet"]))
           myprogram="ruby"
-          monfichier=Fichier("./uploads","lancer_"+name+".sh").ecrire("""xterm -l -hold -e "cd {myroot}/uploads && echo 'c\'est mon script' && bash -l -c '{program} ./{name}'"
+          monfichier=Fichier("./uploads","lancer_"+name+".sh").ecrire("""xterm -l -hold -e "cd {myroot}/uploads && echo \\\"c\'est mon script\\\" && bash -l -c \\\"{program} ./{name}\\\""
          """.format(myroot=os.getcwd(), name=script,program=myprogram))
           Jobscript().create({"user_id":myid,"job_id":user1["job_id"],"name": name})
           
